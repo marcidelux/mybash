@@ -1,11 +1,3 @@
-dbash() {
-    docker exec -it "$1" /bin/bash
-}
-
-dsh() {
-    docker exec -it "$1" /bin/sh
-}
-
 _dockerprint_complete() {
   local cur=${COMP_WORDS[COMP_CWORD]}
   local containers=$(docker ps --format "{{.Names}}")
@@ -14,6 +6,18 @@ _dockerprint_complete() {
 
 complete -F _dockerprint_complete dpcn
 complete -F _dockerprint_complete dlog
+complete -F _dockerprint_complete dbash
+complete -F _dockerprint_complete dsh
+
+dbash() {
+    docker exec -it "$1" /bin/bash
+}
+
+dsh() {
+    docker exec -it "$1" /bin/sh
+}
+
+
 
 #Prints out a given container by its name
 dpcn() {
