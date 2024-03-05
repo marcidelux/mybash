@@ -13,8 +13,14 @@ _dockerprint_complete() {
 }
 
 complete -F _dockerprint_complete dpcn
+complete -F _dockerprint_complete dlog
 
 #Prints out a given container by its name
 dpcn() {
   docker ps --filter "name=$1" --format "ID: {{.ID}}\nname: {{.Names}}\nimage: {{.Image}}\ncommand: {{.Command}}\nport: {{.Ports}}\nstatus: {{.Status}}"
+}
+
+# Follow logs on given docker by name.
+dlog() {
+    docker logs -f "$1"
 }
