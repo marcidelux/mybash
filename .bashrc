@@ -17,6 +17,10 @@ deduplicate_history() {
 
 # Function to select or create a Bash history file
 select_or_create_bash_history() {
+    if [ ! -d "$HOME/.bash_histories" ]; then
+        mkdir -p "$HOME/.bash_histories"
+        echo "Created the ~/.bash_histories directory for storing Bash history files."
+    fi
     echo "Select a Bash history file or create a new one:"
     # Explicitly add "Create new history file" as the first option
     options=("Create new history file")

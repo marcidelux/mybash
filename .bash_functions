@@ -17,8 +17,6 @@ dsh() {
     docker exec -it "$1" /bin/sh
 }
 
-
-
 #Prints out a given container by its name
 dpcn() {
   docker ps --filter "name=$1" --format "ID: {{.ID}}\nname: {{.Names}}\nimage: {{.Image}}\ncommand: {{.Command}}\nport: {{.Ports}}\nstatus: {{.Status}}"
